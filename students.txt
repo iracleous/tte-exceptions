@@ -1,0 +1,6 @@
+Dimitris,Athens,19
+John,Salonica,19
+Petros,Lamia,19
+Nick, Germania, 21
+Harris,Pelop,17
+12,12
