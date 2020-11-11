@@ -1,5 +1,6 @@
 package gr.codehub.model;
 
+import gr.codehub.exceptions.NotSuchStudentException;
 import gr.codehub.exceptions.NullStudentException;
 import gr.codehub.exceptions.ProhibittedAddressException;
 import gr.codehub.exceptions.UnderAgeException;
@@ -16,14 +17,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Cohort {
+
+
     private List<Student> students;
 
-    @Override
-    public String toString() {
-        return "Cohort{" +
-                "students=" + students +
-                '}';
-    }
+    //4 basic actions in aList
+
+    // Create a row in the list, (add, insert)
+    //Read   (retreive, get, select)
+    //Update  patch
+    //Delete remove
+
+
 
     public Cohort() {
         students = new ArrayList<>();
@@ -36,6 +41,22 @@ public class Cohort {
             throw new ProhibittedAddressException("This address is not permitted", 10);
         students.add(student);
     }
+
+
+    public Student getStudent(int index) throws NotSuchStudentException {
+        if (index<0 || index>= students.size())
+                throw new NotSuchStudentException();
+         return students.get(index);
+    }
+
+
+    public void removeStudent(int index) throws NotSuchStudentException {
+        if (index<0 || index>= students.size())
+            throw new NotSuchStudentException();
+         students.remove(index);
+    }
+
+
 
     public void saveStudents(String filename) {
         File file = new File(filename);
@@ -161,6 +182,13 @@ public class Cohort {
             e.printStackTrace();
         }
     }
+    @Override
+    public String toString() {
+        return "Cohort{" +
+                "students=" + students +
+                '}';
+    }
+
 }
 
 
